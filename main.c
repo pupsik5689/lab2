@@ -12,21 +12,15 @@ int main()
   double *mas1, *mas2, *mas3 , *mas;
 
   fopen_s(&file, "..\\abc.txt", "r"); 
-  //printf("%lf", l);
 
   while (feof(file) != 1)
   {
     fscanf_s(file, "%lf", &a);
-    //printf("%lf\n", a);
-    //printf("\n");
-    //l = a;
-
     N += 1;
   } 
 
   fclose(file);
   N -= 1;
-  //printf("%d", N);
 
   mas = (double*)malloc(N * sizeof(double));
   mas1 = (double*)malloc(N * sizeof(double));
@@ -46,10 +40,6 @@ int main()
 
   fclose(file);
 
-
-  
-  
-
   while (flag == 0)
   {
     printf("Menu \n1)print \n2)Puzirec \n3)Vstavki \n4)Bistra \n5)Exit\n\n");
@@ -64,7 +54,7 @@ int main()
         begin = clock();
         Puzirec(mas1, N);
         end = clock();
-        //PrintMas(mas1, N);
+        PrintMas(mas1, N);
         printf("%d ms\n", (end - begin));
 
         printf("\n____________________\n\n");
@@ -75,9 +65,8 @@ int main()
         {
           begin = clock();
           Vstavki(mas2, N);
-          //InsertionSort(mas2, N);
           end = clock();
-          //PrintMas(mas2, N);
+          PrintMas(mas2, N);
           printf("%d ms\n", (end - begin));
 
           printf("\n____________________\n\n");
@@ -89,7 +78,7 @@ int main()
             begin = clock();
             qSort(mas3, N);
             end = clock();
-            //PrintMas(mas3, N);
+            PrintMas(mas3, N);
             printf("%d ms\n", (end - begin));
 
             printf("\n____________________\n\n");
