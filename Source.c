@@ -1,75 +1,125 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "Header.h"
 
-
-
-int main()
+void PrintMas(double* a, int l)
 {
-  int N, i, f = 0;
-  double l = 0, u = 0, a = 0;
-  FILE* file = 0;
-
-  printf("Zhelaete li sami vvseti znachenia?\n1-yes\n0-no\n");
-  scanf_s("%d", &f);
-
-  printf("Vvedite kol-vo elementov:\t");
-  scanf_s("%d", &N);
- /* if (f == 0)
+  int i = 0;
+  for (i = 0; i < l; i++)
   {
-    printf("Vvedite minimalnoe znachenie:\t");
-    scanf_s("%lf", &l);
-
-    printf("Vvedite maximalnoe znachenie:\t");
-    scanf_s("%lf", &u);
-
-    if (u <= l)
-    {
-      printf("!!!ERROR!!! DANNIE NE KORREKTNI\n");
-      return 0;
-    }
-  }*/
-
-  
-
-  
-  if (f == 0)
-  {
-    printf("Vvedite minimalnoe znachenie:\t");
-    scanf_s("%lf", &l);
-
-    printf("Vvedite maximalnoe znachenie:\t");
-    scanf_s("%lf", &u);
-
-    if (u <= l)
-    {
-      printf("!!!ERROR!!! DANNIE NE KORREKTNI\n");
-      return 0;
-    }
-
-    fopen_s(&file, "..\\abc.txt", "w");
-
-    for (i = 0; i < N; i++)
-    {
-      a = ((double)rand()) / RAND_MAX * (u - l) + l;
-      fprintf(file, "%lf\n", a);
-      
-    }
-
-    fclose(file);
+    printf("%d) %lf\n", i+1, a[i]);
   }
-  else
-  {
-    fopen_s(&file, "..\\abc.txt", "w");
-
-    for (i = 0; i < N; i++)
-    {
-      scanf_s("%lf", &a); 
-      
-      fprintf(file, "%lf\n", a);
-    }
-
-    fclose(file);
-
-  }
-  return 0;
 }
+
+
+
+
+void Puzirec(double* a, int l)
+{
+  int i, j;
+  double tmp = 0;
+
+  for (i = 0; i < l; i++)
+  {
+    for (j = 0; j < l - i - 1; j++)
+    {
+      if (a[j] > a[j + 1])
+      {
+        tmp = a[j];
+        a[j] = a[j + 1];
+        a[j + 1] = tmp;
+
+      }
+    }
+  }
+}
+
+
+
+
+/*void Vstavki(double* a, int l)
+{
+  int i, j;
+  double tmp = 0;
+
+  for (i = 1; i < l; i++)
+  {
+    tmp = a[i];
+    for (j = i - 1; j > 0; j--)
+    {
+      if (a[j] > tmp)
+      {
+        a[j + 1] = a[j];
+      }
+      else
+        break;
+    }
+
+    a[j + 1] = tmp;
+  }
+}
+*/
+
+void qSort(double* mas, int l)
+{
+  int i = 0;
+  int j = l - 1;
+  double tmp = 0;
+  double x = mas[(int)(l / 2)];
+
+  do
+  {
+    while (mas[i] < x) i++;
+    while (mas[j] > x) j--;
+
+    if (i <= j)
+    {
+      tmp = mas[i];
+      mas[i] = mas[j];
+      mas[j] = tmp;
+      i++;
+      j--;
+    }
+
+  } while (i <= j);
+
+  if (j > 0)
+    qSort(mas, j + 1);
+
+  if (i < l)
+    qSort(&mas[i], l - i);
+}
+
+/*void Bistra(double* a, int l)
+{
+  qSort(a, 0, l - 1);
+}*/
+
+
+void Vstavki(double* mas, int l )
+{
+  int i, j;
+  double tmp = 0.0;
+
+  for (i = 1; i < l; i++)
+  {
+    tmp = mas[i];
+    j = i - 1;
+    while((j >= 0) && (mas[j] > tmp))
+    {
+      mas[j+1] = mas[j];
+      j--;
+    }
+    mas[j+1] = tmp;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
