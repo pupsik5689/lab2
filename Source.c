@@ -9,9 +9,6 @@ void PrintMas(double* a, int l)
   }
 }
 
-
-
-
 void Puzirec(double* a, int l)
 {
   int i, j;
@@ -31,32 +28,6 @@ void Puzirec(double* a, int l)
     }
   }
 }
-
-
-
-
-/*void Vstavki(double* a, int l)
-{
-  int i, j;
-  double tmp = 0;
-
-  for (i = 1; i < l; i++)
-  {
-    tmp = a[i];
-    for (j = i - 1; j > 0; j--)
-    {
-      if (a[j] > tmp)
-      {
-        a[j + 1] = a[j];
-      }
-      else
-        break;
-    }
-
-    a[j + 1] = tmp;
-  }
-}
-*/
 
 void qSort(double* mas, int l)
 {
@@ -88,12 +59,6 @@ void qSort(double* mas, int l)
     qSort(&mas[i], l - i);
 }
 
-/*void Bistra(double* a, int l)
-{
-  qSort(a, 0, l - 1);
-}*/
-
-
 void Vstavki(double* mas, int l )
 {
   int i, j;
@@ -111,15 +76,3 @@ void Vstavki(double* mas, int l )
     mas[j+1] = tmp;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
