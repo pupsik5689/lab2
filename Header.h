@@ -9,6 +9,4 @@ void Vstavki(double* a, int l);
 
 void qSort(double* a, int l);
 
-//void InsertionSort(double* mass, int l);
-
 #endif
